@@ -21,7 +21,10 @@ int main()
 
     //ゲーム用ウィンドウを生成
     WindowPtr window = Application::CreateGameWindow( "hoge", 720, 480 );
-    if( !window )return 0;
+    if( !window )
+	{
+		return 0;
+	}
 
     Game game( window );
     //ゲームを初期化して、ゲームループを開始する
@@ -38,6 +41,6 @@ int main()
             Application::DoEvents();
         }
     }
-    game.Release();
+	game.Finalize();
     return 0;
 }

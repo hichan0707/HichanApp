@@ -7,7 +7,7 @@
 #define HICHAN_APP_APPLICATION_H
 
 /////////////////////////////////////////////////////////////////////////////////
-///	@		æséŒ¾
+///	@		‘O•ûéŒ¾
 class Window;
 typedef std::shared_ptr< Window > WindowPtr;
 
