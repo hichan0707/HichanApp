@@ -7,7 +7,7 @@
 
 
 /////////////////////////////////////////////////////////////////////////////////
-Window::Window( HWND hwnd )
-    : hwnd( hwnd )
+Window::Window( HWND windowHandle )
+    : _windowHandle( windowHandle )
 {
 }

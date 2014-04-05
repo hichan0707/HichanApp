@@ -18,9 +18,9 @@ int main()
     //メモリリークの検出を有効化
     //  アウトプットウィンドウにメモリリーク時の情報が出力される
     ::_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF );
-
+	
     //ゲーム用ウィンドウを生成
-    WindowPtr window = Application::CreateGameWindow( "hoge", 720, 480 );
+    WindowPtr window = Application::createGameWindow( "hoge", 720, 480 );
     if( !window )
 	{
 		return 0;
@@ -28,19 +28,19 @@ int main()
 
     Game game( window );
     //ゲームを初期化して、ゲームループを開始する
-    if( game.Initialize() )
+    if( game.initialize() )
     {
         //ゲームループ
         //  ウィンドウが閉じられるまで１フレームの処理を繰り返す
-        while( !window->IsClosed() )
+        while( !window->isClosed() )
         {
             //１フレームの処理
-            game.Run();
+            game.run();
 
             //メッセージキューにある全てのwindowsイベントを処理する
-            Application::DoEvents();
+            Application::doEvents();
         }
     }
-	game.Finalize();
+	game.finalize();
     return 0;
 }

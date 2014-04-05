@@ -2,7 +2,7 @@
 #include "Window.h"
 
 /////////////////////////////////////////////////////////////////////////////////
-bool Application::DoEvents()
+bool Application::doEvents()
 {
     MSG msg;
     for( ; ; )
@@ -27,7 +27,7 @@ bool Application::DoEvents()
 
 
 /////////////////////////////////////////////////////////////////////////////////
-WindowPtr Application::CreateGameWindow( const std::string& title, int client_width, int client_height )
+WindowPtr Application::createGameWindow( const std::string& title, int clientWidth, int clientHeight )
 {
     const std::string class_name = "hoge";
     const DWORD style = WS_OVERLAPPEDWINDOW & ~( WS_MAXIMIZEBOX | WS_THICKFRAME );
@@ -50,11 +50,11 @@ WindowPtr Application::CreateGameWindow( const std::string& title, int client_wi
 	}
 
     //クライアントサイズからウィンドウサイズを計算
-    RECT rect = { 0, 0, client_width, client_height };
+    RECT rect = { 0, 0, clientWidth, clientHeight };
     ::AdjustWindowRectEx( &rect, style, FALSE, exstyle );
 
     //ウィンドウ生成
-    HWND hwnd =
+    HWND windwoHandle =
 		::CreateWindowEx(
 			exstyle,
 			class_name.c_str(),
@@ -69,15 +69,15 @@ WindowPtr Application::CreateGameWindow( const std::string& title, int client_wi
 			instance,
 			nullptr 
         );
-    if( hwnd == nullptr )
+    if( windwoHandle == nullptr )
 	{
 		return nullptr;
 	}
-    ::ShowWindow( hwnd, SW_SHOW );
+    ::ShowWindow( windwoHandle, SW_SHOW );
 
-    WindowPtr window( new Window( hwnd ) );
+    WindowPtr window( new Window( windwoHandle ) );
 
-    std::cout << "ウィンドウを生成( " << title << "," << client_width << "," << client_height << " )" << std::endl;
+    std::cout << "ウィンドウを生成( " << title << "," << clientWidth << "," << clientHeight << " )" << std::endl;
 
     return window;
 }

@@ -21,7 +21,7 @@ public:
 	///	@brief		メッセージキューにある全てのwindowsイベントを処理する。
 	///	@return		WM_QUITメッセージを受け取ったかどうか
 	///	-----------------------------------------------------------------------------
-    static bool DoEvents();
+    static bool doEvents();
 	
 	///	-----------------------------------------------------------------------------
 	///	@brief		指定サイズのクライアント領域を持つ、ゲーム用の単純なウィンドウを作成する
@@ -30,7 +30,7 @@ public:
 	///	@param		height  クライアント領域の高さを指定
 	///	@return		生成したWindowクラスへのstd::shared_ptrを返す。失敗時はnullptrを返す。
 	///	-----------------------------------------------------------------------------
-    static WindowPtr CreateGameWindow( const std::string& title, int client_width, int client_height );
+    static WindowPtr createGameWindow( const std::string& title, int client_width, int client_height );
 
 };
 
