@@ -76,8 +76,8 @@ WindowPtr Application::createGameWindow( const std::string& title, int clientWid
     ::ShowWindow( windwoHandle, SW_SHOW );
 
     WindowPtr window( new Window( windwoHandle ) );
-
-    std::cout << "ウィンドウを生成( " << title << "," << clientWidth << "," << clientHeight << " )" << std::endl;
+	
+	DEBUG_TRACE_F( "ウィンドウを生成( " << title << "," << clientWidth << "," << clientHeight << " )" << std::endl );
 
     return window;
 }
