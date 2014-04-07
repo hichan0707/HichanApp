@@ -7,6 +7,7 @@
 #include "Window.h"
 #include "Fps.h"
 
+#include "Allocator.h"
 
 /////////////////////////////////////////////////////////////////////////////////
 Game::Game( const WindowPtr& window )
@@ -48,10 +49,19 @@ int Game::run()
 		return 1;
 	}
 
-	Fps fps(120);
+	Hichan::Allocator allocator;
+
+	Fps fps( 60 );
 	//ゲームループ ウィンドウが閉じられるまで１フレームの処理を繰り返す
 	for( ; ; )
 	{
+
+
+		// 終了
+		if( GetKeyState( VK_ESCAPE ) &0x8000 ) {
+			_window->close();
+		}
+
 		fps.wait();
 		fps.output();
 		if( _window->isClosed() )
@@ -59,6 +69,7 @@ int Game::run()
 			break;
 		}
 	}
+	
 
 	return 0;
 }
@@ -69,9 +80,7 @@ unsigned int WINAPI Game::beginThread( void *obj )
 {
 	DEBUG_TRACE_F( "Game::beginThread" << std::endl );
 
-	reinterpret_cast<Game *>( obj )->run();
-
-	return 0;
+	return reinterpret_cast<Game *>( obj )->run();
 }
 
 
